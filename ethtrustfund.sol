@@ -42,7 +42,7 @@ contract EthTrustFund {
   }
   
   function availableToWithdraw(address walletAddress) public view returns(bool) {
-      (uint i, bool ok) = _getIndex(walleAddress);
+      (uint i, bool ok) = _getIndex(walletAddress);
       require(ok, "Beneficiary does not exist."0); 
       
       if (block.timestamp > beneficiaries[i].releaseTime) {

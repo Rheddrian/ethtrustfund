@@ -73,15 +73,15 @@ contract EthTrustFund {
     }
 
  // View Beneficiaries
-  function _getIndex(address walletAddress) private view returns(uint, bool) {
-    for(uint i = 0; i < beneficiaries.length; i++) {
-        if (beneficiaries[i].walletAddress == walletAddress) {
-            return (i, true); 
-        }
+    function _getIndex(address walletAddress) private view returns(uint, bool) {
+        for(uint i = 0; i < beneficiaries.length; i++) {
+            if (beneficiaries[i].walletAddress == walletAddress) {
+                return (i, true); 
+            }
       
-      return (type(uint).max, false);
+        return (type(uint).max, false);
+        }
     }
-  }
 }
 
 

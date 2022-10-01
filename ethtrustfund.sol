@@ -19,13 +19,19 @@ contract EthTrustFund {
 
     Beneficiary[] public beneficiaries; 
 
+    event BeneficiaryCreated(address indexed walletAddress, string name);
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "You must be the owner to add a beneficiary.");
+        _;
+    }
+
  // Add Beneficiaries
     function addBeneficiary(
         address payable walletAddress,
         string calldata name,
         uint releaseTime
-    ) external {
-        require(msg.sender == owner, "You must be the owner to add a beneficiary.")
+    ) external onlyOwner {
   
         beneficiaries.push(
             Beneficiary(walletAddress, name, releaseTime, 0)
@@ -83,10 +89,3 @@ contract EthTrustFund {
         }
     }
 }
-
-
-// Extra
-
-// Events
-
-// Modifiers
